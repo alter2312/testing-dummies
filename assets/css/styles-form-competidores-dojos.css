@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@600&family=Poppins:wght@600&display=swap');
+
+:root {
+
+  --dark-color: #070707;
+  --main-bg-color: #121212;
+  --secund-bg-color: #0c0c0c;
+  --blue-main: #001659;
+  --secund-color: #321ba6;
+  --red-main: #b30000;
+  --main-color: #09bc9a;
+  --secund-bg-color-light: #e8ede5;
+  --main-bg-color-light: #f1f1f1;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  font-family: "Poppins";
+
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0c0c0c;
+  padding-top: 3rem;
+}
+
+form {
+  width: 80%;
+  height: 70%;
+  background-color: var(--dark-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  ;
+  position: relative;
+
+}
+
+.form-dojo {
+  width: 35%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.box-form {
+  display: flex;
+  gap: 5rem;
+  flex-direction: column;
+  width: 40%;
+  /* background-color: var(--secund-bg-color); */
+  height: 80%;
+  padding: 2rem;
+  position: relative;
+  top: -1rem;
+  /* border-radius: 2rem; */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 4rem;
+  width: 80%;
+}
+
+.form-group .input-form {
+  width: 100%;
+  height: 2rem;
+  font-size: 1rem;
+  color: var(--main-bg-color-light);
+  border: none;
+  border-bottom: 1px solid var(--secund-color);
+  outline: none;
+  background: transparent;
+}
+
+
+.container .form-group select option {
+  color: var(--secund-color);
+  background-color: var(--main-bg-color);
+
+}
+
+.container .form-group select:hover and option:hover {
+  background-color: #000;
+  color: var(--secund-bg-color-light);
+}
+
+.container .form-group .label-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.container .form-group .label {
+  top: -1.5em;
+}
+
+.container .form-group input:active~label,
+.container .form-group input:focus~label {
+  top: -20px;
+  left: 0;
+  color: var(--secund-color);
+  font-size: .7rem;
+}
+
+.container form .btn {
+  display: flex;
+  padding: .5rem 1.4rem;
+  color: #2249bd;
+  font-size: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .5s;
+
+  overflow: hidden;
+  position: absolute;
+  top: 3rem;
+  letter-spacing: 4px;
+  border: none;
+  background-color: transparent;
+  font-weight: 800;
+  cursor: pointer;
+  top: 83%;
+  margin: auto;
+
+}
+
+.container form .btn-competidor {
+  left: 41%
+}
+
+.container form .btn:hover {
+  background: var(--secund-color);
+  color: var(--main-bg-color-light);
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--secund-color),
+    0 0 25px var(--secund-color),
+    0 0 50px var(--secund-color),
+    0 0 100px var(--main-colorr);
+}
+
+
+
+h1 {
+  font-size: 5em;
+  width: auto;
+  height: auto;
+  color: var(--main-bg-color-light);
+  position: relative;
+  top: -.4em;
+  text-shadow: 0 0 5px var(--blue-main),
+    0 0 25px var(--blue-main),
+    0 0 50px var(--blue-main),
+    0 0 100px var(--blue-main);
+  ;
+  letter-spacing: 3px;
+  font-weight: 200;
+  font-family: "Poppins";
+
+}
+
+h1 span {
+  font-weight: 800;
+  color: var(--dark-color);
+  background-color: var(--secund-color);
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  text-shadow: 0 0 transparent;
+  font-family: "Monogram";
+}
+
+@media (min-width:0px) and (max-width:767px) {
+
+
+  .container {
+    width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0c0c0c;
+    gap:1rem;
+   
+  }
+
+  form {
+    width: 80%;
+    height: 70%;
+    background-color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 3rem;
+    border-radius: 2rem;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    position: relative;
+    
+
+  }
+  
+.form-dojo{
+width: 80%;
+height: 70vh;
+display: flex;
+position: relative;
+
+
+}
+
+  .box-form {
+    display: "flex";
+    width: 100%;
+  }
+
+  .form-group {
+
+    width: 100%;
+  }
+
+  .container form .btn {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 5rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 4rem;
+  }
+}
