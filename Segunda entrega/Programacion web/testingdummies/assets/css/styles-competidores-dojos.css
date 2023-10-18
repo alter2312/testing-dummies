@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@600&family=Poppins:wght@600&display=swap');
+:root{
+ 
+  --dark-color:#070707;
+  --main-bg-color:#121212;
+  --secund-bg-color:#0c0c0c;
+  --blue-main:#001659;
+  --secund-color:#321ba6;   
+  --red-main:#b30000;
+  --main-color:#09bc9a;
+  --secund-bg-color-light:#e8ede5;
+  --main-bg-color-light:#f1f1f1;
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+width: 100%;
+height: 100%;
+display: flex;
+flex-direction: column;
+font-family: "Poppins";
+align-items: center;
+overflow-x: hidden;
+
+}
+
+/* styles header */
+header{
+  width:100vw;
+  height: 4rem;
+  background-color: #0c0c0c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:1rem 7rem;
+  box-sizing: border-box;
+
+}
+nav, ul ,li{
+  display: flex;
+  gap:2rem;
+
+}
+.toggle {
+  color: var(--main-bg-color-light);
+  display: none;
+  cursor: pointer;
+
+
+}
+.container_logo{
+  width: 3rem;
+  height: 3rem;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+
+nav a {
+
+  text-decoration: none;
+  color: var(--secund-bg-color-light);
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+
+
+}
+nav a::before{
+  content:"";
+  position:absolute;
+  width: 0%;
+  height: 2.5px;
+  background-color: var(--main-color);
+  top:100%;
+}
+
+nav a:hover{
+  color:var(--main-color);
+  transition: .3s ease-out
+}
+nav a:hover:before{
+  width: 100%;
+  transition: .5s;
+}
+
+
+
+
+/* fin styles header */
+
+
+.container{
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content:baseline;
+  align-items: center;
+  background-color: var(--dark-color);
+  flex-direction: column;
+  padding-top: 3rem;
+  gap:3rem;
+  overflow-x: hidden;
+}
+
+
+
+
+
+.container h1 {
+  color: var(--main-color);
+  font-family: Montserrat, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+ 
+  letter-spacing: 3px;
+}
+
+/* TABLE STYLE */
+.table {
+  width: 70%;
+  margin:auto;
+
+}
+table,
+tr,
+th,
+td {
+  border: 2px solid #2249bd;
+
+  ;
+  
+}
+
+thead {
+  background-color:var(--main-color);
+  color:var(--secund-bg-color-light);
+ 
+  
+  font-size: 1.5rem;
+}
+th,td,tr{
+  padding:.6rem;
+
+}
+
+tbody {
+  background-color: var(--secund-bg-color);
+  color:var(--main-bg-color-light);
+  font-size:1.4rem;
+}
+
+
+/* styles botones */
+
+
+
+.container  .btn {
+  background-color: var(--dark-color);
+  color: var(--main-bg-color-light);
+  font-family: "";
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  border-radius: 3rem;
+  padding:1rem 3rem;
+  font-size: 2rem;
+  border: 4px solid var(--main-bg-color-light);
+  text-decoration: none;
+  letter-spacing: 2px;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container  .btn::before {
+  content: "";
+  background-color: var(--main-bg-color-light);
+
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -100%;
+
+
+  border-radius: 0 0 100% 100%;
+}
+
+.container  .btn:hover {
+  color: var(--dark-color);
+  
+  border:4px solid var(--main-color);
+  transition:color  .2s .3.5s;
+
+
+}
+
+.container .btn:hover:before {
+  top: 0%;
+  left: 0%;
+  height: 123%;
+  transition: .5s top ease;
+
+
+}
+
+.container .btn .text {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* movile */
+@media (min-width:0px) and (max-width:767px) {
+  body{
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100%;
+  
+  }
+  .container{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+  
+    overflow-x: hidden;
+  }
+  .table-responsive{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    padding: 4rem;
+    overflow-x: hidden;
+    top:-5rem
+  }
+  .table{
+    
+    max-width: 100%;
+    min-width: 20rem;
+  }
+  tr,td,th{
+    padding: .2rem;
+  }
+  thead {
+    font-size: .8rem;
+    max-width: 100%;
+    min-width: 20rem;
+  }
+  tbody {
+    font-size:.6rem;
+    max-width: 100%;
+    min-width: 20rem;
+  }
+  .container  .btn {
+    padding:.3rem .7rem;
+    font-size: .8rem;
+  }
+
+
+  .nav_menu {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    position: fixed;
+    top: 3.7rem;
+    background-color: var(--main-bg-color);
+    flex-direction: column;
+    padding: 0;
+    left: 100%;
+    transition: left .3s;
+    z-index: 100;
+    padding-top: 4rem;
+  }
+  .nav_menu-active {
+    left: 0%;
+  
+  }
+  
+  .toggle {
+    display: block;
+    font-size: 2rem;
+  }
+  
+  nav .nav_menu li {
+  
+    display: flex;
+    margin-left: 1rem;
+    width: auto;
+  
+  }
+  
+  
+}
+
+@media (min-width:768px) and (max-width:992px) {
+  
+body{
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100%;
+
+}
+.container{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+    justify-content: baseline;
+    align-items: center;
+    overflow-x: hidden;
+}
+.table-responsive{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  padding: 4rem;
+  overflow-x: hidden;
+  position:relative;
+  top:-5rem
+}
+.table{
+  width: 50%;
+}
+tr,td,th{
+  padding: .3rem;
+}
+thead {
+  font-size: 1rem;
+}
+tbody {
+  font-size:.8rem;
+}
+.container  .btn {
+  padding:.5rem 1rem;
+  font-size: 1rem;
+}
+
+
+.nav_menu {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  top: 3.7rem;
+  background-color: var(--main-bg-color);
+  flex-direction: column;
+  padding: 0;
+  left: 100%;
+  transition: left .3s;
+  z-index: 100;
+  padding-top: 4rem;
+}
+.nav_menu-active {
+  left: 0%;
+
+}
+
+.toggle {
+  display: block;
+  font-size: 2rem;
+}
+
+nav .nav_menu li {
+
+  display: flex;
+  margin-left: 1rem;
+  width: auto;
+
+}
+
+
+
+}
