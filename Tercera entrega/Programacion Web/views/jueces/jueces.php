@@ -10,12 +10,14 @@
     <title>CUK | Jueces</title>
     <!-- <link rel="shortcut icon" href="../../assets/img/Logotype.svg" type="image/x-icon"> -->
     <link rel="stylesheet" href="../../assets/css/jueces.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <script src="https://kit.fontawesome.com/cea33d77ef.js" crossorigin="anonymous"></script>
     <style media="all" id="fa-v4-font-face"></style>
-</head>
+    <link href="/dist/output.css" rel="stylesheet">
 
-<body class="">
+</head>git
+
+<body class="bg-gray-800">
 
 
         <main class="">

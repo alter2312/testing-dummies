@@ -26,6 +26,10 @@ class UsuariosController
 			require_once "views/usuarios/usuario_nuevo.php";
 		}
 
+        public function inico(){
+            require_once "views/inicio.php";
+        }
+        
         public function login() {
              require "views/usuarios/login.php";
         }

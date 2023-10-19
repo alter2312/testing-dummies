@@ -1,7 +1,7 @@
 <?php
 	
-	define("CONTROLADOR_PRINCIPAL", "competidores");
-	define("ACCION_PRINCIPAL", "index");
+	define("CONTROLADOR_PRINCIPAL", "usuarios");
+	define("ACCION_PRINCIPAL", "login");
 	
 	
 ?>
