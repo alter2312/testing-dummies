@@ -1,21 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@600&family=Poppins:wght@600&display=swap');
 
-:root{
- 
-    --dark-color:#070707;
-    --main-bg-color:#121212;
-    --secund-bg-color:#1c1c1c;
-    --blue-main:#001659;
-    --secund-color:#321ba6;   
-    --red-main:#b30000;
-    --main-color:#09bc9a;
-    --secund-bg-color-light:#e8ede5;
-    --main-bg-color-light:#f1f1f1;
-}
-*{
-    padding: 0;
-    margin: 0;
-}
+
 body{
   width: 100%;
   height: 100%;
