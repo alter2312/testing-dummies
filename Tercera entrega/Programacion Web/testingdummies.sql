@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2023 a las 19:06:09
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.12
+-- Tiempo de generación: 25-10-2023 a las 17:23:19
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,6 +43,19 @@ INSERT INTO `asiste` (`idUsuario`, `idTorneo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `coach`
+--
+
+CREATE TABLE `coach` (
+  `CI` int(8) NOT NULL,
+  `Telefono` int(20) NOT NULL,
+  `Nombre` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `Apellido` varchar(20) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `competidor`
 --
 
@@ -74,9 +87,8 @@ INSERT INTO `competidor` (`idcompetidor`, `CI`, `nombre`, `apellido`, `fecha_nac
 CREATE TABLE `compiten` (
   `idcompetidor` int(11) NOT NULL,
   `idTorneo` int(11) NOT NULL,
+  `NumKata` int(11) NOT NULL,
   `puesto` int(11) NOT NULL,
-  `Individual` tinyint(1) NOT NULL,
-  `Grupal` tinyint(1) NOT NULL,
   `Categoria` enum('12/13','14/15','16/17','Mayores') COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
@@ -84,9 +96,9 @@ CREATE TABLE `compiten` (
 -- Volcado de datos para la tabla `compiten`
 --
 
-INSERT INTO `compiten` (`idcompetidor`, `idTorneo`, `puesto`, `Individual`, `Grupal`, `Categoria`) VALUES
-(1, 1, 1, 0, 0, '16/17'),
-(2, 1, 3, 0, 0, '12/13');
+INSERT INTO `compiten` (`idcompetidor`, `idTorneo`, `NumKata`, `puesto`, `Categoria`) VALUES
+(1, 3, 1, 1, '16/17'),
+(2, 1, 1, 3, '12/13');
 
 -- --------------------------------------------------------
 
@@ -98,9 +110,16 @@ CREATE TABLE `componen` (
   `idRonda` int(11) NOT NULL,
   `idTorneo` int(11) NOT NULL,
   `idcompetidor` int(11) NOT NULL,
-  `idLlave` int(11) NOT NULL,
   `resultado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `componen`
+--
+
+INSERT INTO `componen` (`idRonda`, `idTorneo`, `idcompetidor`, `resultado`) VALUES
+(1, 1, 1, 1),
+(1, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -121,6 +140,17 @@ CREATE TABLE `contituye` (
 INSERT INTO `contituye` (`NumKata`, `idcompetidor`, `idRonda`) VALUES
 (1, 1, 1),
 (102, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `dirige`
+--
+
+CREATE TABLE `dirige` (
+  `CI` int(20) NOT NULL,
+  `IDDojo` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -291,16 +321,18 @@ CREATE TABLE `puntaje` (
   `puntaje` decimal(4,2) NOT NULL,
   `IdCompetidor` int(11) DEFAULT NULL,
   `IdUsuario` int(11) DEFAULT NULL,
-  `IdRonda` int(11) DEFAULT NULL
+  `IdRonda` int(11) DEFAULT NULL,
+  `NumKata` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `puntaje`
 --
 
-INSERT INTO `puntaje` (`idpuntaje`, `puntaje`, `IdCompetidor`, `IdUsuario`, `IdRonda`) VALUES
-(1, '9.20', 1, 1, 1),
-(2, '3.20', 2, 3, 2);
+INSERT INTO `puntaje` (`idpuntaje`, `puntaje`, `IdCompetidor`, `IdUsuario`, `IdRonda`, `NumKata`) VALUES
+(1, '9.20', 1, 1, 1, 1),
+(2, '3.20', 1, 3, 1, 2),
+(3, '9.30', 1, 2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -319,7 +351,9 @@ CREATE TABLE `realiza` (
 
 INSERT INTO `realiza` (`NumKata`, `idcompetidor`) VALUES
 (1, 1),
-(102, 2);
+(2, 1),
+(102, 2),
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -342,7 +376,8 @@ CREATE TABLE `ronda` (
 
 INSERT INTO `ronda` (`idRonda`, `fechaInicio`, `fechaFinilizacion`, `horaInicio`, `horaFinilizacion`, `Idllave`) VALUES
 (1, '1002-11-11', '2005-11-11', '20:20:00', '22:22:00', 1),
-(2, '1002-11-11', '2005-11-11', '21:20:00', '23:22:00', 2);
+(2, '1002-11-11', '2005-11-11', '21:20:00', '23:22:00', 2),
+(3, '2023-11-11', '2023-12-12', '12:12:00', '13:12:00', 2);
 
 -- --------------------------------------------------------
 
@@ -355,16 +390,19 @@ CREATE TABLE `torneo` (
   `ubicacion` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
-  `tipo` enum('Masculino','Femenino','','') COLLATE utf8_spanish2_ci NOT NULL
+  `Genero` enum('Masculino','Femenino','','') COLLATE utf8_spanish2_ci NOT NULL,
+  `Tipo` enum('Individual','Grupal','','') COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `torneo`
 --
 
-INSERT INTO `torneo` (`idTorneo`, `ubicacion`, `fecha`, `hora`, `tipo`) VALUES
-(1, 'san gomes', '1001-11-11', '20:00:00', 'Masculino'),
-(2, ' gomes', '1001-12-11', '21:00:00', 'Masculino');
+INSERT INTO `torneo` (`idTorneo`, `ubicacion`, `fecha`, `hora`, `Genero`, `Tipo`) VALUES
+(1, 'san gomes', '1001-11-11', '20:00:00', 'Masculino', 'Individual'),
+(2, ' gomes', '1001-12-11', '21:00:00', 'Masculino', 'Individual'),
+(3, 'san peron', '2023-10-18', '20:00:00', 'Masculino', 'Individual'),
+(4, 'San peru', '2023-12-10', '20:20:00', 'Masculino', 'Individual');
 
 -- --------------------------------------------------------
 
@@ -402,6 +440,12 @@ ALTER TABLE `asiste`
   ADD KEY `fk_asiste_torneo` (`idTorneo`);
 
 --
+-- Indices de la tabla `coach`
+--
+ALTER TABLE `coach`
+  ADD PRIMARY KEY (`CI`);
+
+--
 -- Indices de la tabla `competidor`
 --
 ALTER TABLE `competidor`
@@ -429,6 +473,13 @@ ALTER TABLE `contituye`
   ADD KEY `fk_contituye_ronda` (`idRonda`);
 
 --
+-- Indices de la tabla `dirige`
+--
+ALTER TABLE `dirige`
+  ADD KEY `CI` (`CI`),
+  ADD KEY `IDDojo` (`IDDojo`);
+
+--
 -- Indices de la tabla `dojo`
 --
 ALTER TABLE `dojo`
@@ -453,13 +504,13 @@ ALTER TABLE `puntaje`
   ADD PRIMARY KEY (`idpuntaje`),
   ADD KEY `IdCompetidor` (`IdCompetidor`),
   ADD KEY `IdUsuario` (`IdUsuario`),
-  ADD KEY `IdRonda` (`IdRonda`);
+  ADD KEY `IdRonda` (`IdRonda`),
+  ADD KEY `NumKata` (`NumKata`);
 
 --
 -- Indices de la tabla `realiza`
 --
 ALTER TABLE `realiza`
-  ADD PRIMARY KEY (`NumKata`,`idcompetidor`),
   ADD KEY `fk_realiza_competidor` (`idcompetidor`);
 
 --
@@ -507,13 +558,13 @@ ALTER TABLE `kata`
 -- AUTO_INCREMENT de la tabla `puntaje`
 --
 ALTER TABLE `puntaje`
-  MODIFY `idpuntaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idpuntaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `ronda`
 --
 ALTER TABLE `ronda`
-  MODIFY `idRonda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idRonda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -546,12 +597,20 @@ ALTER TABLE `compiten`
   ADD CONSTRAINT `compiten_ibfk_2` FOREIGN KEY (`idTorneo`) REFERENCES `torneo` (`idTorneo`);
 
 --
+-- Filtros para la tabla `dirige`
+--
+ALTER TABLE `dirige`
+  ADD CONSTRAINT `dirige_ibfk_1` FOREIGN KEY (`CI`) REFERENCES `coach` (`CI`),
+  ADD CONSTRAINT `dirige_ibfk_2` FOREIGN KEY (`IDDojo`) REFERENCES `dojo` (`idDojo`);
+
+--
 -- Filtros para la tabla `puntaje`
 --
 ALTER TABLE `puntaje`
   ADD CONSTRAINT `puntaje_ibfk_1` FOREIGN KEY (`IdCompetidor`) REFERENCES `competidor` (`idcompetidor`),
   ADD CONSTRAINT `puntaje_ibfk_2` FOREIGN KEY (`IdUsuario`) REFERENCES `usuario` (`idUsuario`),
-  ADD CONSTRAINT `puntaje_ibfk_3` FOREIGN KEY (`IdRonda`) REFERENCES `ronda` (`idRonda`);
+  ADD CONSTRAINT `puntaje_ibfk_3` FOREIGN KEY (`IdRonda`) REFERENCES `ronda` (`idRonda`),
+  ADD CONSTRAINT `puntaje_ibfk_4` FOREIGN KEY (`NumKata`) REFERENCES `kata` (`NumKata`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

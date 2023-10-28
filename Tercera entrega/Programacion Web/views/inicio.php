@@ -15,9 +15,9 @@
         		<i class="fa-solid fa-bars"></i>
       		</bottom>
             <ul class="nav_menu">
-            <li><a href="">TESTING DUMMIES</a></li>
-            <li><a href="">INSCRIBIR COMPETIDOR</a></li>
-            <li><a href="">LOGIN</a></li>
+            <li><a href="https://testingdummies.alterolsztyn.repl.co">TESTING DUMMIES</a></li>
+            <li><a href="index.php?c=coach&a=formInscripcion">INSCRIBIR COMPETIDOR</a></li>
+            <li><a href="index.php?c=usuarios&a=login">LOGIN</a></li>
             </ul>
         </nav>
     </header>
@@ -25,9 +25,11 @@
     <main class="container">
         <div class="container-text">
             <h1 class="title-text">Neo <span>Karate</span></h1>
-            <p class="description-text">descripcion de la aplicacion web</p>
-            
-        </div>
+            <p class="description-text">
+            Registro de competidores y creación de torneos de Kata.
+            <h2 class="nombre-empresa">Neo Karate </h2> es lo mas simple de usar
+        </p>         
+   </div>
        
         
         <div class="slider">

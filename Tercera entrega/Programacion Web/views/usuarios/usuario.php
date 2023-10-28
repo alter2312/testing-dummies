@@ -37,7 +37,7 @@
 			
 			
 			<div class="table-responsive">
-				<table class="table" cellspacing=0 cellpadding=5 >
+				<table class="table" id="example" cellspacing=0 cellpadding=5 >
 					<thead>
 						<tr class="table-primary">
 							<th>Nombre</th>
@@ -68,6 +68,15 @@
 			</div>
 		</section>
 		<script src="assets/js/menu.js"></script>
-
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script>
+        new DataTable('#example', {
+            responsive: true
+        });
+    </script>
 	</body>
 </html>

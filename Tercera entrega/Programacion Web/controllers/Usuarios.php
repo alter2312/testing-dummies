@@ -26,7 +26,7 @@ class UsuariosController
 			require_once "views/usuarios/usuario_nuevo.php";
 		}
 
-        public function inico(){
+        public function inicio(){
             require_once "views/inicio.php";
         }
         
@@ -82,9 +82,9 @@ class UsuariosController
 
         
      
-     public function inicio(){
-        require_once "views/usuarios/inicio.php";
-    }
+    //  public function inicio(){
+    //     require_once "views/usuarios/inicio.php";
+    // }
   
 		
 		public function guarda(){

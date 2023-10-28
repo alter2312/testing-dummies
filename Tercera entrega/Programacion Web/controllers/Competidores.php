@@ -31,13 +31,14 @@
 			$apellido = $_POST['apellido'];
 			$fecha_nac = $_POST['fecha_nac'];
 			$genero = $_POST['genero'];
-			$idDojo = $_POST['idDojo'];
+			$Dojo = $_POST['Dojo']; 
 			$competidores = new Competidores_model();
-			$dojo = new Dojo_model();
-			$idDojo = 
-			$competidores->insertar($CI, $nombre, $apellido,$fecha_nac, $genero, $idcompetidor);
+			$idDojo = $competidores->getIdDojo($Dojo);
+
+			$ingresarCompetidor= $competidores->insertar($CI, $nombre, $apellido, $fecha_nac, $genero, $idDojo);
 			$data["titulo"] = "Competidores";
 			$this->index();
+			
 			
 		}
 
@@ -61,8 +62,10 @@
 				$apellido = $_POST['apellido'];
 				$fecha_nac = $_POST['fecha_nac'];
 				$genero = $_POST['genero'];
+				$Dojo = $_POST['Dojo'];
 				$competidores = new Competidores_model();
-				$competidores->modificar($idcompetidor, $CI, $nombre, $apellido, $fecha_nac, $genero);
+				$idDojo = $competidores->getIdDojo($Dojo);
+				$competidores->modificar($idcompetidor, $CI, $nombre, $apellido, $fecha_nac, $genero, $idDojo);
 				$data["titulo"] = "Competidores";
 				$this->index();
 			}

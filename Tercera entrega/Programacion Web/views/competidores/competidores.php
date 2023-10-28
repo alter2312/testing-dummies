@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title><?php echo $data["titulo"]; ?></title>
 
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-   		<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+			<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"> -->
+    	<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"> -->
+   		<!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css"> -->
 		<script src="https://kit.fontawesome.com/cea33d77ef.js" crossorigin="anonymous"></script>
 		 <link rel="stylesheet" href="../../assets/css/styles-competidores-dojos.css">
 
@@ -32,7 +32,7 @@
 			</a>	
 		</figure>
     </header>
-		<main class="" style="width:100%">
+		<main class="container">
 			<h1><?php echo $data["titulo"]; ?></h1>
 			
 			<a href="index.php?c=competidores&a=nuevo" class=" btn-primary"><span class="text">Agregar</span></a>
@@ -47,6 +47,7 @@
 							<th>Apellido</th>
 							<th>Fecha de nacimiento</th>
 							<th>Genero</th>
+							<th>Dojo </th>
 							<th>Editar</th>
 							<th>Eliminar</th>
 				
@@ -59,6 +60,7 @@
 							echo "<td>".$dato["apellido"]."</td>";
 							echo "<td>".$dato["fecha_nac"]."</td>";
 							echo "<td>".$dato["genero"]."</td>";
+							echo "<td>".$dato["dojo"]."</td>";
 							echo "<td><a href='index.php?c=competidores&a=eliminar&id=".$dato["idcompetidor"]."' class='btn'>
     						<span class='text'>Eliminar</span>
   							</a></td>";

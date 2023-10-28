@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,500&display=swap');
 @import "normalize.css";
 main{
   display: flex;
@@ -72,20 +71,29 @@ object-fit: cover;
 
 
 .container-text{
-
+width: 30%;
 }
 
 .title-text{
 font-size: 3rem;
+
 
 }
 .title-text span{
 color:var(--main-color)
 }
 .description-text{
-font-size: 1.2rem;
-}
+font-size: 1.1rem;
+letter-spacing: 1px;
 
+}
+.nombre-empresa{
+  color: var(--main-color);
+  font-size: 1.1rem;
+  display: inline;
+  text-transform: uppercase;
+  
+}
 
 @keyframes slider{
 

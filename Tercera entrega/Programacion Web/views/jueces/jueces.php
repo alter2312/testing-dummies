@@ -15,13 +15,13 @@
     <style media="all" id="fa-v4-font-face"></style>
     <link href="/dist/output.css" rel="stylesheet">
 
-</head>git
+</head>
 
 <body class="bg-gray-800">
 
 
         <main class="">
-            <form action="index.php?c=jueces&a=enviarPuntaje" method="POST" class="">
+            <form action="../../index.php?c=jueces&a=enviarPuntaje" method="POST" class="">
                 <div class="">
                     <input type="number" id="puntaje-input" name="puntaje" step="0.1" placeholder="5.0" max="10.0" min="5.0" class="">
 
@@ -36,7 +36,15 @@
               
             </form> 
             <div class="container-info_competidor">
-         
+            <?php 
+            foreach($data["competidor"] as $value){
+            	echo $dato["CI"];
+                echo $dato["nombre"];
+                echo $dato["apellido"];
+                echo $dato["fecha_nac"];
+                echo $dato["genero"];
+            }
+            ?>
             </div>
            
         </main>

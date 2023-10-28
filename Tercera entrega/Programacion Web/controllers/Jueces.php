@@ -8,7 +8,7 @@
 
     public function index(){
 		$data["titulo"] = "Juez";
-        require_once "views/jueces/jueces.php";	
+        require_once "../../views/jueces/jueces.php";	
     }
 
 

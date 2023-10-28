@@ -4,15 +4,15 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<title><?php echo $data["titulo"]; ?></title>
-		<link rel="stylesheet" href="../../assets/css/styles-form-competidores-dojos.css">
+		<link rel="stylesheet" href="../../assets/css/formularios.css">
 		<script src="assets/js/bootstrap.min.js" ></script>
 	</head>
 	
 	<body>
-		<section class="container">
-			<h1>Competidores</h1>
+		<main class="container">
+			<h1>Compe<span>tidores</span></h1>
 			
-			<form id="nuevo" name="nuevo" method="POST" action="index.php?c=competidores&a=guarda" autocomplete="off">
+			<form id="nuevo" name="nuevo" method="POST" action="../../index.php?c=competidores&a=guarda" autocomplete="off">
 			<div class="box-form">
 
 					<div class="form-group">
@@ -26,12 +26,12 @@
 					</div>
 				
 					<div class="form-group">
-					<input type="text" class="input-form" id="apellido" name="apellido" pattern="[A-Za-zÁ-ú\s]{1,30}" required />
+					<input type="text" class="input-form" id="apellido" name="apellido" pattern="[A-Za-zÁ-ú\s]{1,30}"  />
 					<label for="apellido" class="label-form">Apellido</label>
 					</div>
 				</div>
 
-				<div class="box-form">
+				<div class="box-form box-form-right">
 				
 					<div class="form-group">
 						<label for="fecha_nac" class="label-form label">Fecha de nacimiento</label>
@@ -48,31 +48,20 @@
 					</div>
 					
 					<div class="form-group">
-					<input type="text" class="input-form" id="nombre" name="NombreDojo" pattern="[A-Za-zÁ-ú\s]{1,30}" required />
-					<label for="nombre" class="label-form">Dojo</label>
-					</div>
-				</div>
-				<div class="box-form">
-
-				
-				
-				
-				<div>	
-					<div class="form-group">
-						<label for="individual" class="label-form">torneo individual</label>
-						<input type="checkbox" class="input-form" id="apellido" name="individual" required />
+					<input type="text" class="input-form" id="nombre" name="Dojo" required />
+					<label for="Dojo" class="label-form">Dojo</label>
 					</div>
 					
-					<div class="form-group">
-						<label for="grupal" class="label-form">torneo grupal</label>
-						<input type="checkbox" class="input-form" id="apellido" name="grupal" required />
-					</div>
-				</div>
-			</div>
-
-				<button id="guardar" name="guardar" type="submit" class="btn  btn-competidor">Guardar</button>
 				
+				</div>
+				<button id="guardar" name="guardar" type="submit" class="btn  btn-competidor">Guardar
+					<span class="bar"></span>
+
+				</button>
+
+            </button>
 			</form>
-		</section>
+		</main>
+		<script src="../../assets/js/main.js"></script>
 	</body>
 </html>

@@ -6,6 +6,7 @@
 	require_once "controllers/Competidores.php";
 	require_once "controllers/Dojo.php";
 	require_once "controllers/Usuarios.php";
+	require_once "controllers/Coach.php";
 	
 	
 
