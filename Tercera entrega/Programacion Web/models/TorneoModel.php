@@ -33,7 +33,7 @@
 
 
 
-    public function crearTorneo($ubucacion,$fecha , $hora, $genero, $tipo){
+    public function crearTorneo($ubucacion, $fecha , $hora, $genero, $tipo){
 
         $sql = ("INSERT INTO torneo(ubicacion, fecha, hora, genero, tipo) VALUES( '$ubucacion','$fecha','$hora', '$genero', '$tipo')");
         $resultado = $this->db->query($sql);

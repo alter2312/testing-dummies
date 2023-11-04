@@ -16,6 +16,7 @@ body{
   background-color: #0c0c0c;
   padding:3rem 0;
   position: relative;
+  
 
   
 }
@@ -31,19 +32,20 @@ form {
   border-radius: 2rem;
   box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
   position: absolute;
-  top:8%;
+  top:3.6rem;
   z-index: 2;
 
 }
 
 .form-small {
-  width: 35%;
+  width: 40%;
   height: 70%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+
 }
 
 .box-form {
@@ -179,19 +181,16 @@ form h3{
 
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.7rem;
   width: auto;
   height: auto;
   color: var(--main-bg-color-light);
   position: absolute;
-  top: -5rem;
-
+  top: -3.4rem;
   z-index: 20;
   letter-spacing: 3px;
   font-weight: 900;
   font-family: "Poppins";
-  
-
 }
 
 h1 span{

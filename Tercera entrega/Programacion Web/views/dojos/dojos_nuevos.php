@@ -11,7 +11,7 @@
 	<body>
 		<div class="container">
 			
-			<form class="form-dojo" id="nuevo" name="nuevo" method="POST" action="index.php?c=dojo&a=guarda" autocomplete="off">
+			<form class="form-small" id="nuevo" name="nuevo" method="POST" action="index.php?c=dojo&a=guarda" autocomplete="off">
 			<h1><?php echo $data["titulo"]; ?></h1>
 
             <div class="form-group">

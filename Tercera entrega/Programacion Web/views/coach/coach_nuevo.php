@@ -26,7 +26,7 @@
 					</div>
 				
 					<div class="form-group">
-					<input type="text" class="input-form" id="apellido" name="apellido" pattern="[A-Za-zÁ-ú\s]{1,30}"  />
+					<input type="text" class="input-form" id="apellido" name="apellido" pattern="[A-Za-zÁ-ú\s]{1,30}" required />
 					<label for="apellido" class="label-form">Apellido</label>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 				<div class="box-form box-form-right">
 				
 					<div class="form-group">
-                        <input type="text" class="input-form" id="telefono" name="telefono"  pattern="[0-9]{9}" />
+                        <input type="text" class="input-form" id="telefono" name="telefono"  pattern="[0-9]{9}" required/>
 						<label for="telefono" class="label-form ">Telefono</label>
 					</div>
 

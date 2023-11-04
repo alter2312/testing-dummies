@@ -15,9 +15,10 @@
         		<i class="fa-solid fa-bars"></i>
       		</bottom>
             <ul class="nav_menu">
-            <li><a href="https://testingdummies.alterolsztyn.repl.co">TESTING DUMMIES</a></li>
-            <li><a href="index.php?c=coach&a=formInscripcion">INSCRIBIR COMPETIDOR</a></li>
-            <li><a href="index.php?c=usuarios&a=login">LOGIN</a></li>
+            <li><a href="https://testingdummies.alterolsztyn.repl.co">Testing Dummies</a></li>
+            <li><a href="index.php?c=coach&a=formInscripcion">Inscribir competidor</a></li>
+            <li><a href="index.php?c=coach&a=formInscripcionGrupo">Inscribir equipo</a></li>
+            <li><a href="index.php?c=usuarios&a=login">Log In</a></li>
             </ul>
         </nav>
     </header>

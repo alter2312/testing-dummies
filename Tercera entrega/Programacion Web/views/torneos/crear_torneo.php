@@ -43,8 +43,8 @@
 			</select>
 		</div>		
         <div class="form-group">
-		    <label for="genero" class="label-form label">Tipo de torneo</label>
-    		<select name="genero" class="input-form" id="genero"> 
+		    <label for="tipo" class="label-form label">Tipo de torneo</label>
+    		<select name="tipo" class="input-form" id="tipo"> 
                  <option value="Individual">Individual</option>
 			    <option value="Grupal">Grupal</option>
 			</select>

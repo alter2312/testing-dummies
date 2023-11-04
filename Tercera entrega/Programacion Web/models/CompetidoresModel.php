@@ -24,27 +24,31 @@
 		}
 		
 		
-		public function insertar($CI, $nombre, $apellido, $fecha_nac, $genero, $idDojo){
+		public function insertar($CI, $nombre, $apellido, $fecha_nac, $genero, $idDojo, $cantidad){
 			
 			$resultado = $this->db->query("INSERT INTO competidor (CI, nombre, apellido, fecha_nac, genero, IDDojo) VALUES ('$CI', '$nombre', '$apellido', '$fecha_nac', '$genero', '$idDojo')");
-		 	
+			if ($resultado) {
+				return $this->db->insert_id;
+			} else {
+				return false;
+			}
 			
 		}
 		
-		public function modificar($idcompetidor, $CI, $nombre, $apellido, $fecha_nac, $genero, $idDojo){
+		public function modificar($IDCompetidor, $CI, $nombre, $apellido, $fecha_nac, $genero, $idDojo){
 			
-			$resultado = $this->db->query("UPDATE competidor SET CI='$CI', nombre='$nombre', apellido='$apellido', fecha_nac='$fecha_nac', genero='$genero', idDojo='$idDOjo' WHERE idcompetidor = '$idcompetidor'");			
+			$resultado = $this->db->query("UPDATE competidor SET CI='$CI', nombre='$nombre', apellido='$apellido', fecha_nac='$fecha_nac', genero='$genero', idDojo='$idDOjo' WHERE IDCompetidor = '$IDCompetidor'");			
 		}
 		
-		public function eliminar($idcompetidor){
+		public function eliminar($IDCompetidor){
 			
-			$resultado = $this->db->query("DELETE FROM competidor WHERE idcompetidor = '$idcompetidor'");
+			$resultado = $this->db->query("DELETE FROM competidor WHERE IDCompetidor = '$IDCompetidor'");
 			
 		}
 		
-		public function get_competidor($idcompetidor)
+		public function get_competidor($IDCompetidor)
 		{
-			$sql = "SELECT competidor.*, dojo.nombre dojo FROM competidor join dojo on competidor.IDDojo = dojo.idDojo WHERE idcompetidor='$idcompetidor' LIMIT 1";
+			$sql = "SELECT competidor.*, dojo.nombre dojo FROM competidor join dojo on competidor.IDDojo = dojo.idDojo WHERE IDCompetidor='$IDCompetidor' LIMIT 1";
 			$resultado = $this->db->query($sql);
 			$row = $resultado->fetch_assoc();
 
@@ -58,11 +62,10 @@
 			return $row["idDojo"];
 		}
 
-		public function getNombreDojo($idDojo){
-			$sql = "SELECT Nombre from Dojo where idDojo='$idDojo'";
-			$resultado = $this->db->query($sql);
-			return $resultado;
+		public function crearEquipo($IDCompetidor, $cantidad){
+			$resultado = $this->db->query("INSERT into equipo (IDComeptidor, cantidad) values( $IDCompetidor,$cantidad)");
 		}
+		
 		
 	}
 

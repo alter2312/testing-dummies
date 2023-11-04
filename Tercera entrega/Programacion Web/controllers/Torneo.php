@@ -4,33 +4,35 @@ class TorneoController{
     public function __construct(){
         require_once "models/TorneoModel.php";
     }
-    public function CrearTorneo(){
-        
-        $torneo = new torneo_model;
+
+    public function viewFormulario (){
+        require_once "views/torneos/crear_torneo.php";
+    }
+    public function CrearTorneo() {
+        // Aquí capturas los datos del torneo desde el formulario
         $ubicacion = $_POST["ubicacion"];
         $fecha = $_POST["fecha"];
-        $hora = $_POST ["hora"];
-        $genero = $_POST ["genero"];
-        $tipo = $_POST ["tipo"];
-        
-        $data["torneo"] = $torneo->creartorneo($ubicacion, $fecha, $hora, $genero, $tipo);
-        $id = $torneo ->getID();
+        $hora = $_POST["hora"];
+        $genero = $_POST["genero"];
+        $tipo = $_POST["tipo"];
+    
+        // Creas el torneo y obtienes su ID
+        $torneo = new torneo_model;
+        $torneo->creartorneo($ubicacion, $fecha, $hora, $genero, $tipo);
+        $idTorneo = $torneo->getID();
         $competidor = $torneo->get_competidores();
-        if ($tipo =="grupal"){
-            $this->torneoGrupal();
-            
-
+    
+        foreach ($competidor as $datoscompetidor) {
+            $this->ingresarCompetidor($idTorneo, $datoscompetidor["idcompetidor"], $datoscompetidor["fecha_nac"], $datoscompetidor["genero"]);
         }
-       foreach ($competidor as $datoscompetidor){
-        
-            $this->ingresarCompetidor($id, $datoscompetidor["idcompetidor"], $datoscompetidor["fecha_nac"], $datoscompetidor["genero"]);
-       }
+        header("Location: views/llaves/llaves.php");
     }
+    
         
     
 
 
-    public function ingresarCompetidor($idtorneo, $idcompetidor, $fechaNacimiento, $genero, $individual, $grupal) {
+    public function ingresarCompetidor($idtorneo, $idcompetidor, $fechaNacimiento, $genero) {
         $torneo = new torneo_model;
         $genero_torneo = $_POST["genero"];
         $tipo = $_POST["tipo"];

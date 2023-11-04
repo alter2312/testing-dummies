@@ -15,7 +15,7 @@
     <div class="container">
 
 
-        <form id="modificar" name="modificar"class="form-dojo" method="POST" action="index.php?c=dojo&a=actualizar&id='<?php echo $data["idDojo"];?>">
+        <form id="modificar" name="modificar"class="form-small" method="POST" action="index.php?c=dojo&a=actualizar&id='<?php echo $data["idDojo"];?>">
             <input type="hidden" name="idDojo" value="<?php echo $data["idDojo"]; ?>" />
             <h1><?php echo $data["titulo"]; ?></h1>
 

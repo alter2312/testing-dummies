@@ -46,8 +46,7 @@
 					<label for="telefono" class="label-form label">Telefono</label>
 				</div>
 
-				<div class="form-group">
-				</div>
+				
 				<div class="form-group">
 					<input type="text" class="input-form" id="nombre" name="dojo" value ="<?php echo $data["coach"]["dojo"]?>">
 					<label for="dojo" class="label-form">Dojo</label>

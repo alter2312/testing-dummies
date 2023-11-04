@@ -12,7 +12,7 @@
     <main class="container">
         <h1>Inscri<span>pciones</span></h1>
 
-        <form id="nuevo" name="nuevo" method="POST" action="../../index.php?c=coach&a=inscrpcion" autocomplete="off">
+        <form id="nuevo" name="nuevo" method="POST" action="../../index.php?c=coach&a=inscripcion" autocomplete="off">
         <h3 class="title-left">Datos del competidor</h3>    
         <h3 class="title-right">Datos del coach</h3>
 
