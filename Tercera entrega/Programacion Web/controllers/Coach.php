@@ -164,7 +164,9 @@ public function formInscripcionGrupo(){
 					$idCompetidor1 = $coach->obtenerIdCompetidorPorCI($CICompetidor1);
 					$idCompetidor2 = $coach->obtenerIdCompetidorPorCI($CICompetidor2);
 					$idCompetidor3 = $coach->obtenerIdCompetidorPorCI($CICompetidor3);
-	
+					if($this->validarDojo($idCompetidor1,$idCompetidor2,$idCompetidor3,$CICoach)==true){
+
+					
 						// Agregar validación de rango de edad
 						if ($this->validarCompetidores($idCompetidor1, $idCompetidor2, $idCompetidor3)) {
 							$idEquipo = $coach->crearEquipo($idCompetidor1, 3); // Crea el equipo con el capitán (competidor2) y 2 miembros.
@@ -175,6 +177,9 @@ public function formInscripcionGrupo(){
 						} else {
 							echo "<div class='alerta'>Los competidores deben de tener el mismo rango de edad para inscribir el equipo</div>";
 						}
+					}else{
+						echo "<div class='alerta'>Los competidores o el coach no pertenece al mismo dojo</div>";
+					}
 				} else {
 					echo "<div class='alerta'>Alguna de las cedulas de los competidores son iguales.</div>";
 				}
@@ -243,6 +248,19 @@ public function formInscripcionGrupo(){
 		 else{
 			false;
 		 }
+	}
+	public function validarDojo($idCompetidor1,$idCompetidor2,$idCompetidor3,$CICoach){
+		$coach = new Coach_model;
+		$dojo1 = $coach->getDojoCompetidor($idCompetidor1); 
+		$dojo2 = $coach->getDojoCompetidor($idCompetidor2); 
+		$dojo3 = $coach->getDojoCompetidor($idCompetidor3); 
+		$dojoCoach = $coach->getDojoCoach($CICoach);
+		if($dojo1 == $dojo2 && $dojo2 == $dojo3 && $dojo3 == $dojoCoach){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }	
 	

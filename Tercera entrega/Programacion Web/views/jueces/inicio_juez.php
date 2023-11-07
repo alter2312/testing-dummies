@@ -1,4 +1,3 @@
-<?php session_start();?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +32,10 @@
         <div class="fondo"></div>
 
             <h1 class="title">Neo <span>Karate</span></h1>
+            <h3 class="nombre_user"><?php echo $_SESSION["nombre"]?></h3>
+            <a class="LinkJuez puntuar" href="../../index.php?c=juez&a=index">Puntar</a>
          <a href="#session1" class="btn-arrow"><img src="../../assets/img/arrow-down.png" alt=""></a>
-</div>
+
         </section>
         <section id="session1">
             <div class="container-text">
@@ -64,7 +65,7 @@ Para pasar de la forma tradicional, poco eficaz, a una simple y  rápida.
                     </div>
             </div>
             <div class="container-text">
-                <h2>Bienvenido  <span>Juez x</span> </h2>
+                <h2>Bienvenido  <a href="../../index.php?c=juez&a=index" ><span><?php echo $_SESSION["nombre"]?></span></a> </h2>
                 <p>En este apartado de la aplicación web "Neo Karate" podrás Descalificar, Calificar e Sancionar a los competidores que participan en el torneo.</p>
                 <p>Y si tienes algún problema la aplicación web cuenta con una opción para pedir ayuda a tu/s administrador/es.</p>
             </div>

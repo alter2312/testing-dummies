@@ -1,85 +1,64 @@
 <?php
- 
- class Torneo_model{
-   
-   private $db;
-   private $torneo;
-   private $competidores;
-    public function __construct(){
+
+class Torneo_model {
+    private $db;
+    private $torneo;
+    private $equipos;
+
+    public function __construct() {
         $this->db = Conectar::conexion();
-        $torneo= array();
-        $competidores = array();
+        $this->torneo = array();
+        $this->equipos = array();
     }
 
-   public function getID(){
-    $sql = "SELECT last_insert_id() id";
-    $resultado = $this->db->query($sql);
-    $row = $resultado->fetch_assoc();
-    return $row["id"];
-
-
-   }
-   public function get_competidores()
-   {
-       $sql = "SELECT * FROM competidor";
-       $resultado = $this->db->query($sql);
-       while($row = $resultado->fetch_assoc())
-       {
-           $this->competidores[] = $row;
-       }
-       return $this->competidores;
-   }
-   
-
-
-
-    public function crearTorneo($ubucacion, $fecha , $hora, $genero, $tipo){
-
-        $sql = ("INSERT INTO torneo(ubicacion, fecha, hora, genero, tipo) VALUES( '$ubucacion','$fecha','$hora', '$genero', '$tipo')");
+    public function getID() {
+        $sql = "SELECT last_insert_id() id";
         $resultado = $this->db->query($sql);
-     
-        
-        return $resultado;
+        $row = $resultado->fetch_assoc();
+        return $row["id"];
     }
 
-    public function ingresar_competidor($idcompetidor, $idtorneo, $categoria){
-        $sql =( "INSERT INTO compiten (idcompetidor, idTorneo, Categoria) values ('$idcompetidor', '$idtorneo', '$categoria')");
-        $resultado = $this->db->query($sql);
-        return $resultado;
-    }
-    public function get_competidores_dojo($idDojo){
-
-        $sql = "SELECT * from competidor join dojo on  competidor.idDojo = dojo.idDojo where idDojo";
-        $resultado = $this->db->query($sql);
-        while($row = $resultado->fetch_assoc())
-        {
-            $this->competidores[] = $row;
-        }
-        return $this->competidores;
-    }
-    
-        
-    
-    public function agruparCompetidor($idTorneo) {
-        $sql = "SELECT competidor.*, dojo.nombre AS NombreDojo, compiten.Categoria
-                FROM competidor
-                JOIN dojo ON competidor.IDDojo = dojo.idDojo
-                JOIN compiten ON competidor.idcompetidor = compiten.idcompetidor
-                JOIN torneo ON torneo.idTorneo = compiten.idTorneo
-                WHERE torneo.idTorneo = $idTorneo
-                GROUP BY dojo.idDojo, compiten.Categoria;";
-                
+    public function get_equipos_individual($genero) {
+        $sql = "SELECT competidor.*, IDEquipo 
+                FROM equipo
+                JOIN competidor ON equipo.IDCompetidor = competidor.IDCompetidor
+                WHERE equipo.Cantidad = 1 AND competidor.Genero = '$genero'";
         $resultado = $this->db->query($sql);
         while ($row = $resultado->fetch_assoc()) {
-            $this->competidores[] = $row;
+            $this->equipos[] = $row;
         }
-        
-        return $this->competidores;
+        return $this->equipos;
     }
-    
+
+    public function get_equipos_grupal($genero) {
+        $sql = "SELECT competidor.*, IDEquipo 
+                FROM equipo
+                JOIN competidor ON equipo.IDCompetidor = competidor.IDCompetidor
+                WHERE equipo.Cantidad = 3 AND competidor.Genero = '$genero'";
+        $resultado = $this->db->query($sql);
+        while ($row = $resultado->fetch_assoc()) {
+            $this->equipos[] = $row;
+        }
+        return $this->equipos;
+    }
+
+    public function crearTorneo($ubicacion, $fecha, $genero, $tipo, $estado) {
+        $sql = "INSERT INTO torneo (Ubicacion, Fecha, Genero, Tipo, EstadoTorneo) VALUES ('$ubicacion', '$fecha', '$genero', '$tipo', '$estado')";
+        $resultado = $this->db->query($sql);
+        return $resultado;
+    }
+
+    public function ingresarEquipo($idEquipo, $idTorneo, $categoria) {
+        $sql = "INSERT INTO compite (IDEquipo, IDTorneo, Categoria) VALUES ('$idEquipo', '$idTorneo', '$categoria')";
+        $resultado = $this->db->query($sql);
+        return $resultado;
+    }
+
+    public function ObtenerFechaNacimientoCompetidor($idCompetidor) {
+        $sql = "SELECT Fecha_Nac FROM competidor WHERE IDCompetidor = '$idCompetidor'";
+        $resultado = $this->db->query($sql);
+        $row = $resultado->fetch_assoc();
+        return $row["Fecha_Nac"];
+    }
 }
-    
-    
- 
- 
- ?>
+

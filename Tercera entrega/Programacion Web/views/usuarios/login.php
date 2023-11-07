@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-group">
-        <input type="password" name="password" maxlength="20" minlength="" title="la contraseña debe de tener 8 minimo caracteres y al menos una mayuscula"   class="input-form">
+        <input type="password" name="password" maxlength="20" minlength="" required title="la contraseña debe de tener 8 minimo caracteres y al menos una mayuscula"   class="input-form">
           <label for="password" class="label-form">Password</label>
         </div>
 

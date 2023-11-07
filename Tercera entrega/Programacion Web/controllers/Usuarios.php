@@ -31,15 +31,29 @@ class UsuariosController
         }
         
         public function login() {
-             require "views/usuarios/login.php";
+             require_once "views/usuarios/login.php";
+        }
+        public function inicioJuez($nombre){
+            $user = new usuarios_model();
+            $_SESSION["nombre"]= $nombre;
+            require_once "views/jueces/inicio_juez.php";
+            
+        }
+        public function inicioJuez1(){
+            require_once "views/jueces/inicio_juez1.php";
         }
 
+        public function inicioAdmin(){
+            require_once "views/admin/inicio_admin";
+        }
 
+        public function inicioAdminUSer(){
+            require_once "views/admin/inicio_admin_user";
+        }
         public function validar() {
             
         
                 if (empty($_POST["user"]) || empty($_POST["password"]) || empty($_POST["grupoUsuario"])) {
-                    echo "hola";
                     echo '<div class="error">Campos vacíos</div>';
                     require_once "views/usuarios/login.php";
                     
@@ -56,16 +70,16 @@ class UsuariosController
         
                         switch ($grupoUsuario) {
                             case 'Juez':
-                                header("Location: views/jueces/inicio_juez.php");
+                                $this->iniciojuez($user);
                                 break;
                             case 'Juez1':
-                                header("Location: views/jueces/inicio_juez1.php");
+                                header("Location: Index.php?c=usuarios&a=inicioJuez1");
                                 break;
                             case 'Administrador':
-                                header("Location: views/administrador/inicio_administrador.php");
+                                header("Location: index.php?c=inicioAdmin");
                                 break;
                             case 'administradorBDKarate':
-                                header("Location: views/administrador_bd_karate/inicio_Administrador_bd_karate.php");
+                                header("Location: index.php?c=inicioAdminUser");
                                 break;
                             default:
                                 echo "Tipo de usuario no válido.";

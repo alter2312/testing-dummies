@@ -17,22 +17,22 @@
    
 
             <div class="form-group">
-                    <input type="text" class="input-form" id="CI" name="CICompetidor1" pattern="[0-9]{8}" title="Tu cedula deben ser los 8 dígitos sin la barra"  />
+                    <input type="text" class="input-form" id="CI" name="CICompetidor1" required pattern="[0-9]{8}" title="Tu cedula deben ser los 8 dígitos sin la barra"  />
                     <label for="CI" class="label-form">CI capitan</label>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="input-form" id="CI" name="CICompetidor2" pattern="[0-9]{8}" title="Tu cedula deben ser los 8 dígitos sin la barra"  />
+                    <input type="text" class="input-form" id="CI" name="CICompetidor2" required pattern="[0-9]{8}" title="Tu cedula deben ser los 8 dígitos sin la barra"  />
                     <label for="CI" class="label-form">CI integrante 2</label>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="input-form" id="CI" name="CICompetidor3" pattern="[0-9]{8}" title="Tu cedula deben ser los 8 dígitos sin la barra"  />
+                    <input type="text" class="input-form" id="CI" name="CICompetidor3" required pattern="[0-9]{8}" title="Tu cedula deben ser los 8 dígitos sin la barra"  />
                     <label for="CI" class="label-form">CI integrante 3</label>
                 </div>
                 
                 <div class="form-group">
-                    <input type="text" class="input-form" id="CI" name="CICoach" pattern="[0-9]{8}" title="Tu cedula deben ser los 8 dígitos sin la barra"  />
+                    <input type="text" class="input-form" id="CI" name="CICoach" required pattern="[0-9]{8}" title="Tu cedula deben ser los 8 dígitos sin la barra"  />
                     <label for="CI" class="label-form">CI coach</label>
                 </div>
             </div>

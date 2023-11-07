@@ -1,7 +1,7 @@
 <?php
 	
-	define("CONTROLADOR_PRINCIPAL", "usuarios");
-	define("ACCION_PRINCIPAL","inicio");
+	define("CONTROLADOR_PRINCIPAL", "llaves");
+	define("ACCION_PRINCIPAL","index");
 	
 	
 ?>

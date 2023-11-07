@@ -7,6 +7,7 @@
 	require_once "controllers/Dojo.php";
 	require_once "controllers/Usuarios.php";
 	require_once "controllers/Coach.php";
+	require_once "controllers/llaves.php";
 	
 	
 

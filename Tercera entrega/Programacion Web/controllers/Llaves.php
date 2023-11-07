@@ -1,58 +1,86 @@
 <?php
-class LlaveController{
-    public function __construct(){
-        require_once "models/LlaveModel.php";
+
+class LlavesController {
+    public function __construct() {
+        require_once "models/LlavesModel.php";
     }
 
-    public function mostrarLlave(){
+    public function index() {
+        $llave = new LlaveModel;
+        $idTorneo = $llave->getIDTorneo();
+        $data["title"] = "Torneo número $idTorneo";
+        $cantidad = $llave->cantidadEquipos($idTorneo);
+        foreach ($cantidad as $categoria) {
+            echo "<div class='cant_competidores'>Cantidad de competidores en la categoría " . $categoria['Categoria'] . "<br> " . $categoria['cantidad'] . "<br>" . "</div>";
+        }
+
         require_once "views/llaves/llaves.php";
     }
 
-    public function crearLlave(){
-        $idTorneo = $_POST['idTorneo'];
-        $categoria = $_POST['categoria'];
-        
+    public function crearLlave() {
         $llaveModel = new LlaveModel();
 
-        $cantCompetidores = $llaveModel->cantCompetidoresCategoria($idTorneo);
-
-        if ($cantCompetidores['cantidad'] == 2 || $cantCompetidores['cantidad'] == 3) {
-            $llaveIdRojo = $llaveModel->crearLlave($categoria, 'rojo');
-            $competidores = $llaveModel->get_competidores_categoria_Torneo($idTorneo, $categoria);
-            foreach($ompetidores as $competidor){
-                $llaveModel->agregarCompetidorLlave($idTorneo, $competidor, $llaveIdRojo);
-
+        $idTorneo = $llaveModel->getIDTorneo();
+        $categoria = $_POST['categoria'];
+    
+        if ($categoria == "mayores") {
+            $categoria = "18/mayores";
+        }
+        $cantEquipos = $llaveModel->cantEquiposCategoria($idTorneo, $categoria);
+        
+        $equiposEnCategoria = 0;
+    
+        foreach ($cantEquipos as $cat) {
+            if ($cat["Categoria"] === $categoria) {
+                $equiposEnCategoria = $cat["cantidad"];
+                break;
             }
         }
-        elseif ($cantCompetidores['cantidad'] >=4 && $cantCompetidores['cantidad']<=10 ) {
+    
+       
+         if($equiposEnCategoria <= 1){
+            echo "<div class='alerta'>No hay competidores suficientes en esta categoria  ".$categoria ."</div>";
+            $this->index();
+        }
+        
+         elseif ($equiposEnCategoria == 2 || $equiposEnCategoria == 3) {
             $llaveIdRojo = $llaveModel->crearLlave($categoria, 'rojo');
-            $llaveIdAzul = $llaveModel->crearLlave($categoria, 'azul');       
-            shuffle($competidores);
-                if($cantCompetidores['cantidad'] % 2 !== 0){
-                $mitadMasUno = ceil($cantCompetidores['cantidad'] / 2);
-                $competidoresDivididos = array_chunk($competidores, $mitadMasUno);
-            
-                foreach ($competidoresDivididos[0] as $competidor) {
-                    $llaveModel->agregarCompetidorLlave($idTorneo, $competidor, $llaveIdRojo);
+            $equipos = $llaveModel->getEquiposCategoriaTorneo($idTorneo, $categoria);
+            foreach ($equipos as $equipo) {
+                $llaveModel->agregarEquipoLlave($idTorneo, $equipo, $llaveIdRojo);
+            }
+         } elseif ($equiposEnCategoria >= 4 && $equiposEnCategoria <= 10) {
+            $llaveIdRojo = $llaveModel->crearLlave($categoria, 'rojo');
+            $llaveIdAzul = $llaveModel->crearLlave($categoria, 'azul');
+            $equipos = $llaveModel->getEquiposCategoriaTorneo($idTorneo , $categoria);
+            shuffle($equipos);
+
+            if ($equiposEnCategoria % 2 !== 0) {
+                $mitadMasUno = ceil($cantEquipos / 2);
+                $equiposDivididos = array_chunk($equipos, $mitadMasUno);
+
+                foreach ($equiposDivididos[0] as $equipo) {
+                    $llaveModel->agregarEquipoLlave($idTorneo, $equipo, $llaveIdRojo);
                 }
 
-                foreach ($competidoresDivididos[1] as $competidor) {
-                    $llaveModel->agregarCompetidorLlave($idTorneo, $competidor, $llaveIdAzul);
+                foreach ($equiposDivididos[1] as $equipo) {
+                    $llaveModel->agregarEquipoLlave($idTorneo, $equipo, $llaveIdAzul);
                 }
-            }    
-            else {
-                $competidoresDivididos = array_chunk($competidores, $cantCompetidores['cantidad'] / 2);
+            } else {
+                $equiposDivididos = array_chunk($equipos, $cantEquipos / 2);
 
-                foreach ($competidoresDivididos[0] as $competidor) {
-                    $llaveModel->agregarCompetidorLlave($idTorneo, $competidor, $llaveIdRojo);
+                foreach ($equiposDivididos[0] as $equipo) {
+                    $llaveModel->agregarEquipoLlave($idTorneo, $equipo, $llaveIdRojo);
                 }
 
-                foreach ($competidoresDivididos[1] as $competidor) {
-                    $llaveModel->agregarCompetidorLlave($idTorneo, $competidor, $llaveIdAzul);
+                foreach ($equiposDivididos[1] as $equipo) {
+                    $llaveModel->agregarEquipoLlave($idTorneo, $equipo, $llaveIdAzul);
                 }
             }
+        } else {
+            echo "<div class='alerta'>El sistema no puede soportar más de 10 competidores o equipos por ahora</div>";
+            $this->index();
         }
     }
-
 }
 ?>

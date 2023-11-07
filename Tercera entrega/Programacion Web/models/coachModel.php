@@ -139,6 +139,39 @@ class Coach_model {
             return false; // La CI del competidor no existe
         }
     }
+    public function getDojoCompetidor($idCompetidor) {
+        $sql = "SELECT dojo.NombreDojo
+                FROM competidor
+                JOIN dojo ON competidor.IDDojo = dojo.IDDojo
+                WHERE competidor.IDCompetidor = '$idCompetidor'";
+    
+        $resultado = $this->db->query($sql);
+        $row = $resultado->fetch_assoc();
+    
+        if ($row) {
+            return $row['NombreDojo'];
+        } else {
+            return false;
+        }
+    }
+    public function getDojoCoach($CI) {
+        $sql = "SELECT dojo.NombreDojo
+                FROM coach
+                JOIN dirige ON coach.CI = dirige.CI
+                JOIN dojo ON dirige.IDDojo = dojo.IDDojo
+                WHERE coach.CI = '$CI'";
+    
+        $resultado = $this->db->query($sql);
+        $row = $resultado->fetch_assoc();
+    
+        if ($row) {
+            return $row['NombreDojo'];
+        } else {
+            return false;
+        }
+    }
+    
+    
 }
 
 ?>
